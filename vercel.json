@@ -1,15 +1,16 @@
 {
-  "builds": [
+  "services": [
     {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
-    }
-  ],
-  "routes": [
+      "name": "frontend",
+      "rootDirectory": "client",
+      "buildCommand": "npm install && npm run build",
+      "startCommand": "npm run start"
+    },
     {
-      "src": "/(.*)",
-      "dest": "/client/build/$1"
+      "name": "backend",
+      "rootDirectory": "server",
+      "buildCommand": "npm install",
+      "startCommand": "node index.js"
     }
   ]
 }
